@@ -8,7 +8,7 @@ private:
   char letter;
   int value;
 public:
-  Tile(char letter, int value);
+  Tile(char let = '!', int val = 0);
   char getLetter();
   //Tile(const Tile& orig);
   //~Tile();
@@ -20,10 +20,10 @@ class Board {
 private:
   Tile board[15][15];
   //int turnCount = 0;
-  Tile bag[];
 public:
   Board();
   char getTileChar(int x, int y);
+  void printBoard();
   //Board(const Board& orig);
   //~Board();
   //const Board& operator=(const Board& orig);
@@ -31,20 +31,44 @@ public:
   //void takeTurn();
   //bool emptyBag();
 };
+
+class Bag {
+private:
+  struct Node {
+    Tile bagTile;
+    Node* next;
+  };
+  Node* front;
+  Node* rear;
+public:
+  Bag();
+  //~Bag();
+  void fillBag();
+  //void shuffle();
+  void enqueue(Tile val);
+  //Tile dequeue();
+  //bool isEmpty();
+  //int countNodes();
+  void displayBag();
+};
+
 /*
 class Player {
 private:
   string name;
   int points;
-  Player hand[10];
+  Tile hand[10];
 public:
   Player();
+  
   Player(const Player& orig);
   ~Player();
   const Player& operator=(const Player& orig);
   void fillHand();
   void placeWord();
   void checkValidity();
-}
-*/
+  }
+  */
+
+
 #endif
